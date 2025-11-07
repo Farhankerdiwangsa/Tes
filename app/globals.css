@@ -1,0 +1,240 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers:wght@400&family=Inter:wght@400;700&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-panel text-textblack font-inter antialiased overflow-x-hidden;
+    background-color: #FFF9E0;
+    color: #000000;
+  }
+}
+
+@layer components {
+  .comic-title-stroke {
+    font-family: 'Bangers', cursive;
+    letter-spacing: 1px;
+    color: #FFD75C !important;
+    text-shadow:
+      2px 2px 0 #000,
+      -2px -2px 0 #000,
+      2px -2px 0 #000,
+      -2px 2px 0 #000,
+      2px 0 0 #000,
+      -2px 0 0 #000,
+      0 2px 0 #000,
+      0 -2px 0 #000,
+      1px 1px 2px rgba(0, 0, 0, 0.6);
+  }
+  
+  .comic-border {
+    @apply border-4 border-textblack;
+  }
+  
+  .comic-shadow {
+    box-shadow: 6px 6px 0px #000000;
+  }
+  
+  .action-button {
+    @apply w-full sm:w-auto flex-1 sm:flex-none bg-panel font-semibold text-base sm:text-lg px-5 py-3 rounded-lg text-textblack tracking-wide transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer;
+    @apply comic-border comic-shadow;
+    @apply hover:scale-[1.05] active:scale-95; 
+  }
+  
+  .action-button:disabled {
+    @apply bg-gray-200 opacity-70 cursor-not-allowed hover:scale-100 active:scale-100;
+    box-shadow: none;
+  }
+  
+  .action-button.active {
+    @apply !bg-mustard !text-black !font-bold !border-textblack;
+    @apply !translate-y-[2px] !scale-95;
+    box-shadow: 2px 2px 0px #000000 !important;
+  }
+
+  .loader-dot {
+    width: 10px;
+    height: 10px;
+    background-color: #FFC300;
+    border-radius: 50%;
+    animation: dot-bounce 1.4s infinite ease-in-out;
+  }
+
+  .loader-dot:nth-child(2) {
+    animation-delay: -0.16s;
+  }
+
+  .loader-dot:nth-child(3) {
+    animation-delay: -0.32s;
+  }
+
+  .simple-dots-loader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+    height: 100%;
+  }
+
+  .simple-dots-loader span {
+    width: 15px;
+    height: 15px;
+    background-color: #FFC300;
+    border-radius: 50%;
+    opacity: 0.3;
+    animation: simple-bounce 1s infinite ease-in-out;
+  }
+
+  .simple-dots-loader span:nth-child(2) {
+    animation-delay: 0.1s;
+  }
+
+  .simple-dots-loader span:nth-child(3) {
+    animation-delay: 0.2s;
+  }
+
+  .bottom-nav-item {
+    @apply flex flex-col items-center justify-center p-2 text-textblack tap-highlight-transparent transition-transform duration-200 ease-out;
+  }
+
+  .bottom-nav-item .nav-icon {
+    @apply text-2xl;
+  }
+
+  .bottom-nav-item .nav-text {
+    @apply font-bangers text-lg tracking-wide;
+  }
+
+  .bottom-nav-item.active {
+    @apply text-mustard;
+    -webkit-text-stroke: 1px #000;
+    text-shadow: 1px 1px 0 #000;
+  }
+
+  .comic-button {
+    @apply bg-mustard font-bangers text-2xl px-6 py-2 comic-border rounded-md comic-shadow text-textblack comic-title-stroke tracking-wider transition-all duration-200 hover:scale-105 active:scale-95 active:shadow-none active:translate-x-1 active:translate-y-1;
+  }
+
+  .comic-button-secondary {
+    @apply bg-gray-200 font-bangers text-2xl px-6 py-2 comic-border rounded-md comic-shadow text-textblack tracking-wider transition-all duration-200 hover:bg-gray-300 active:scale-95 active:shadow-none active:translate-x-1 active:translate-y-1;
+  }
+
+  .comic-input {
+    @apply w-full p-3 font-inter text-lg text-textblack bg-white comic-border rounded-md focus:outline-none focus:ring-4 focus:ring-mustard;
+  }
+
+  .player-action-button {
+    @apply flex items-center justify-center gap-2 bg-panel font-semibold text-base px-4 py-2 rounded-lg text-textblack;
+    @apply comic-border comic-shadow;
+    @apply transition-all duration-200 hover:scale-[1.05] active:scale-95 active:shadow-none active:translate-x-[2px] active:translate-y-[2px] disabled:opacity-70 disabled:grayscale;
+  }
+
+  .player-action-button.active {
+    @apply !bg-mustard !text-black !font-bold !border-textblack;
+    box-shadow: 2px 2px 0px #000000 !important;
+  }
+
+  .episode-nav-button {
+    @apply flex-shrink-0 w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center bg-panel font-bangers text-2xl sm:text-3xl rounded-lg text-textblack;
+    @apply comic-border comic-shadow;
+    @apply transition-all duration-200 hover:scale-[1.05] active:scale-95 active:shadow-none active:translate-x-[2px] active:translate-y-[2px];
+  }
+
+  .episode-nav-button.active {
+    @apply !bg-mustard !text-black !font-bold !border-textblack;
+    box-shadow: 2px 2px 0px #000000 !important;
+  }
+
+  .comment-filter-button {
+    @apply bg-panel font-semibold text-base px-5 py-2 rounded-lg text-textblack;
+    @apply comic-border comic-shadow;
+    @apply transition-all duration-200 hover:scale-[1.05] active:scale-95 active:shadow-none active:translate-x-[2px] active:translate-y-[2px];
+  }
+
+  .comment-filter-button.active {
+    @apply !bg-mustard !text-black !font-bold !border-textblack;
+    box-shadow: 2px 2px 0px #000000 !important;
+  }
+
+  .horizontal-scrollbar::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  .horizontal-scrollbar::-webkit-scrollbar-track {
+    background: #000000;
+    border-radius: 4px;
+    @apply comic-border border-2;
+  }
+
+  .horizontal-scrollbar::-webkit-scrollbar-thumb {
+    background: #FFC300;
+    border-radius: 4px;
+    @apply comic-border border-2;
+  }
+
+  .horizontal-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #FFD75C;
+  }
+
+  .inline-tv-loader {
+    @apply bg-black comic-border comic-shadow rounded-2xl p-2 w-64 sm:w-80 relative overflow-hidden;
+    border-width: 6px;
+  }
+
+  .inline-tv-screen {
+    @apply w-full aspect-video bg-gray-900 rounded-md relative overflow-hidden flex items-center justify-center;
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+  }
+
+  .inline-tv-icon {
+    @apply text-mustard text-6xl sm:text-7xl z-10;
+    animation: tvSpin 1.8s ease-in-out infinite;
+  }
+
+  .inline-tv-screen::before {
+    content: '';
+    @apply absolute inset-0 w-full h-full z-20;
+    background: linear-gradient(to bottom, transparent 0%, rgba(255,255,255,0.03) 50%, transparent 100%);
+    background-size: 100% 6px;
+    animation: tvScanlines 0.2s linear infinite;
+  }
+
+  .inline-tv-screen::after {
+    content: '';
+    @apply absolute inset-0 w-full h-full z-30 opacity-20;
+    background: 
+      repeating-linear-gradient(rgba(255,255,255,0.05) 0 1px, transparent 1px 2px),
+      repeating-linear-gradient(90deg, rgba(255,255,255,0.05) 0 1px, transparent 1px 2px);
+    animation: tvFlicker 1.5s linear infinite;
+  }
+}
+
+@layer utilities {
+  .tap-highlight-transparent {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+#video-loader-overlay {
+  @apply absolute inset-0 bg-black/50 backdrop-blur-sm z-10 flex items-center justify-center transition-opacity duration-300 opacity-0 pointer-events-none;
+}
+
+#video-loader-overlay.active {
+  @apply opacity-100 pointer-events-auto;
+}
+
+.video-spinner {
+  @apply w-12 h-12 border-4 border-panel border-t-mustard rounded-full animate-spin;
+}
+
+.toast-notification {
+  @apply fixed bottom-4 right-4 bg-mustard text-textblack font-bold px-6 py-3 rounded-lg comic-border comic-shadow z-[99] translate-y-20 opacity-0 transition-all duration-300 ease-out;
+}
+
+.toast-notification.show {
+  @apply translate-y-0 opacity-100;
+}
