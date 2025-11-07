@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Solusi Paling Efektif untuk Error Undici di Next.js 14
+  // SOLUSI KRITIS untuk "Module parse failed: Undici"
+  // Ini memberitahu Next.js (SWC) untuk mengkompilasi undici yang menggunakan sintaks modern.
   transpilePackages: ['undici'],
   
   images: {
