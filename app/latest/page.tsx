@@ -204,8 +204,3 @@ export default function Latest() {
     </div>
   );
 }
-
-export const metadata = {
-  title: 'TongDev | Terbaru - Anime Rilis Terkini!',
-  description: 'Temukan anime terbaru yang baru saja rilis dengan kualitas terbaik',
-};
