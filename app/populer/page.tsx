@@ -169,8 +169,3 @@ export default function Populer() {
     </div>
   );
 }
-
-export const metadata = {
-  title: 'TongDev | Populer - Anime Paling Top!',
-  description: 'Temukan anime paling populer dan trending dengan rating tertinggi',
-};
