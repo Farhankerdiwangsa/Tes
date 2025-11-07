@@ -1,8 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // START: Perbaikan untuk Next.js 14 dan Error Undici
+  // Wajib: Memperbaiki error "Module parse failed: Undici"
   transpilePackages: ['undici'],
-  // END: Perbaikan untuk Next.js 14 dan Error Undici
+  
+  // Catatan: experimental: { appDir: true } sudah dihapus karena sudah default di Next.js 14.
   
   images: {
     domains: [
@@ -15,6 +16,7 @@ const nextConfig = {
   },
   
   env: {
+    // Menghilangkan peringatan jika variabel CUSTOM_ENV tidak didefinisikan
     CUSTOM_ENV: process.env.CUSTOM_ENV || '',
   },
   
@@ -39,8 +41,6 @@ const nextConfig = {
       },
     ];
   },
-  
-  // Catatan: experimental: { appDir: true } dihapus karena sudah default di Next.js 14.
 }
 
 module.exports = nextConfig
