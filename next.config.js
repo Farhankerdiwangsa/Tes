@@ -1,8 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    appDir: true,
-  },
+  // START: Perbaikan untuk Next.js 14 dan Error Undici
+  transpilePackages: ['undici'],
+  // END: Perbaikan untuk Next.js 14 dan Error Undici
+  
   images: {
     domains: [
       'placehold.co',
@@ -12,9 +13,11 @@ const nextConfig = {
     ],
     unoptimized: true
   },
+  
   env: {
-    CUSTOM_ENV: process.env.CUSTOM_ENV,
+    CUSTOM_ENV: process.env.CUSTOM_ENV || '',
   },
+  
   async headers() {
     return [
       {
@@ -36,9 +39,8 @@ const nextConfig = {
       },
     ];
   },
-  // START: Perbaikan untuk Module parse failed: Undici
-  transpilePackages: ['undici'],
-  // END: Perbaikan untuk Module parse failed: Undici
+  
+  // Catatan: experimental: { appDir: true } dihapus karena sudah default di Next.js 14.
 }
 
 module.exports = nextConfig
