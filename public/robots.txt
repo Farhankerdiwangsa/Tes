@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tongdev-stream.vercel.app/sitemap.xml
