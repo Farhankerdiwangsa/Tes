@@ -1,5 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  experimental: {
+    appDir: true,
+  },
   images: {
     domains: [
       'placehold.co',
@@ -9,22 +12,8 @@ const nextConfig = {
     ],
     unoptimized: true
   },
-  webpack: (config, { isServer }) => {
-    if (!isServer) {
-      config.resolve.fallback = {
-        fs: false,
-        net: false,
-        tls: false,
-        dns: false,
-      };
-    }
-    
-    config.module = {
-      ...config.module,
-      exprContextCritical: false,
-    };
-    
-    return config;
+  env: {
+    CUSTOM_ENV: process.env.CUSTOM_ENV,
   },
   async headers() {
     return [
@@ -47,6 +36,9 @@ const nextConfig = {
       },
     ];
   },
+  // START: Perbaikan untuk Module parse failed: Undici
+  transpilePackages: ['undici'],
+  // END: Perbaikan untuk Module parse failed: Undici
 }
 
 module.exports = nextConfig
