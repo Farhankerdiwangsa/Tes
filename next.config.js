@@ -1,8 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    appDir: true,
-  },
   images: {
     domains: [
       'placehold.co',
@@ -12,8 +9,22 @@ const nextConfig = {
     ],
     unoptimized: true
   },
-  env: {
-    CUSTOM_ENV: process.env.CUSTOM_ENV,
+  webpack: (config, { isServer }) => {
+    if (!isServer) {
+      config.resolve.fallback = {
+        fs: false,
+        net: false,
+        tls: false,
+        dns: false,
+      };
+    }
+    
+    config.module = {
+      ...config.module,
+      exprContextCritical: false,
+    };
+    
+    return config;
   },
   async headers() {
     return [
